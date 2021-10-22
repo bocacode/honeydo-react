@@ -7,7 +7,7 @@ export default function Hero({ uid, setLoading, setListItems }) {
     const newItem = { name: value, uid }
     fetch('https://honeydo-api-bc.web.app/items', {
       method: 'POST',
-      header: {
+      headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newItem),
