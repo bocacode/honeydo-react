@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
 import { List } from 'antd'
 
-export default function ItemList({ uid, listItems, setListItems, loading, setLoading }) {
+export default function ItemList({ user, listItems, setListItems, loading, setLoading }) {
   useEffect(() => {
     setLoading(true)
-    if(!uid) {
-      setListItems(null)
+    if(!user) {
+      setListItems([])
       setLoading(false)
     } else {
-      fetch(`https://honeydo-api-bc.web.app/items/${uid}`)
+      fetch(`https://honeydo-api-bc.web.app/items/${user.uid}`)
         .then(response => response.json())
         .then(data => {
           setListItems(data)
@@ -16,7 +16,7 @@ export default function ItemList({ uid, listItems, setListItems, loading, setLoa
         })
         .catch(err => alert(err))
     }
-  }, [uid])
+  }, [user])
   return (
     <List
       size="large"

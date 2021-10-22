@@ -21,11 +21,11 @@ function App() {
               <LoginForm setUser={setUser} />
             </Modal>
           : <Hero
-              uid={uid}
+              uid={user.uid}
               setLoading={setLoading}
               setListItems={setListItems} />}
         <ItemList
-          uid={uid}
+          user={user}
           listItems={listItems}
           setListItems={setListItems}
           setLoading={setLoading}
