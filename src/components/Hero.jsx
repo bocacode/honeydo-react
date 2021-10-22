@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { Input } from 'antd'
 const { Search } = Input
 
 export default function Hero({ uid, setLoading, setListItems }) {
+  const [inputValue, setInputValue] = useState('')
   const handleNewItem = (value) => {
     setLoading(true)
     const newItem = { name: value, uid }
@@ -17,6 +19,7 @@ export default function Hero({ uid, setLoading, setListItems }) {
         fetch(`https://honeydo-api-bc.web.app/items/${uid}`)
         .then(response => response.json())
         .then(data => {
+          setInputValue('')
           setListItems(data)
           setLoading(false)
         })
@@ -30,6 +33,8 @@ export default function Hero({ uid, setLoading, setListItems }) {
       <Search
         enterButton="Add"
         size="large"
+        value={inputValue}
+        onChange={e => setInputValue(e.target.value)}
         onSearch={handleNewItem}
         placeholder="Add todo item" />
     </section>
