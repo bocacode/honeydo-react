@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState()
   return (
     <Layout>
-      <Navbar />
+      <Navbar setUser={setUser} />
       <Content className="site-layout" style={{ marginTop: 64, padding: '0 50px' }}>
         {!user
           ? <Modal title="Login" visible={true} footer={null}>
